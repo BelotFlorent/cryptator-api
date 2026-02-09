@@ -2,7 +2,7 @@ Dans le projet cryptator (la branche : https://github.com/BelotFlorent/cryptator
 mvn clean install  
 
 
-Dans l'api cryptator-api :
+Dans l'api cryptator-api :  
 mvn clean package  
 java -jar target\cryptator-api-1.0.1-SNAPSHOT.jar  
 
