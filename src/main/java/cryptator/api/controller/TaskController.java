@@ -9,6 +9,11 @@
 package cryptator.api.controller;
 
 import cryptator.api.service.TaskManager;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -22,6 +27,7 @@ import java.util.Map;
 @RestController
 @RequestMapping("/api/v1/tasks")
 @CrossOrigin(origins = "*")
+@Tag(name = "Tasks", description = "Manage and cancel long-running operations")
 public class TaskController {
     
     @Autowired
@@ -31,8 +37,14 @@ public class TaskController {
      * Cancel a running task
      * POST /api/v1/tasks/{taskId}/cancel
      */
+    @Operation(summary = "Cancel a task", description = "Cancel a long-running solve or generate operation")
+    @ApiResponses(value = {
+        @ApiResponse(responseCode = "200", description = "Task cancelled or not found")
+    })
     @PostMapping("/{taskId}/cancel")
-    public ResponseEntity<Map<String, Object>> cancelTask(@PathVariable String taskId) {
+    public ResponseEntity<Map<String, Object>> cancelTask(
+            @Parameter(description = "Task ID to cancel", required = true)
+            @PathVariable String taskId) {
         Map<String, Object> response = new HashMap<>();
         
         boolean cancelled = taskManager.cancelTask(taskId);

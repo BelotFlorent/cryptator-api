@@ -11,6 +11,13 @@ package cryptator.api.controller;
 import cryptator.api.dto.GenerateRequest;
 import cryptator.api.dto.GenerateResponse;
 import cryptator.api.service.CryptagenService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -24,6 +31,7 @@ import java.util.Arrays;
 @RestController
 @RequestMapping("/api/v1/cryptagen")
 @CrossOrigin(origins = "*")
+@Tag(name = "Cryptagen", description = "Generate cryptarithms from word lists")
 public class CryptagenController {
 
     @Autowired
@@ -42,6 +50,13 @@ public class CryptagenController {
      *   "shuffle": false
      * }
      */
+    @Operation(summary = "Generate cryptarithms", 
+               description = "Generate cryptarithms from a list of words with specified operator")
+    @ApiResponses(value = {
+        @ApiResponse(responseCode = "200", description = "Successfully generated",
+                     content = @Content(schema = @Schema(implementation = GenerateResponse.class))),
+        @ApiResponse(responseCode = "400", description = "Invalid input")
+    })
     @PostMapping("/generate")
     public ResponseEntity<GenerateResponse> generate(@Valid @RequestBody GenerateRequest request) {
         GenerateResponse response = cryptagenService.generateCryptarithms(

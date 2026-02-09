@@ -11,6 +11,13 @@ package cryptator.api.controller;
 import cryptator.api.dto.CryptamancerHintResponse;
 import cryptator.api.dto.CryptamancerRequest;
 import cryptator.api.service.CryptamancerService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -23,6 +30,7 @@ import javax.validation.Valid;
 @RestController
 @RequestMapping("/api/v1/cryptamancer")
 @CrossOrigin(origins = "*")
+@Tag(name = "Cryptamancer", description = "Interactive game mode with hints and validation")
 public class CryptamancerController {
 
     @Autowired
@@ -39,6 +47,12 @@ public class CryptamancerController {
      *   "hintLevel": 1
      * }
      */
+    @Operation(summary = "Get a hint", 
+               description = "Get a progressive hint based on current attempt and hint level")
+    @ApiResponses(value = {
+        @ApiResponse(responseCode = "200", description = "Hint provided",
+                     content = @Content(schema = @Schema(implementation = CryptamancerHintResponse.class)))
+    })
     @PostMapping("/hint")
     public ResponseEntity<CryptamancerHintResponse> getHint(@Valid @RequestBody CryptamancerRequest request) {
         CryptamancerHintResponse response = cryptamancerService.getHint(
