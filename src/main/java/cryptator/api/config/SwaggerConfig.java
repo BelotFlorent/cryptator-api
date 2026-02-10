@@ -34,10 +34,9 @@ public class SwaggerConfig {
                                 "A cryptarithm is a mathematical puzzle where digits are replaced by letters. " +
                                 "For example: SEND + MORE = MONEY\n\n" +
                                 "**Features:**\n" +
-                                "- 🔍 Solve cryptarithms with various solver types\n" +
-                                "- 🎲 Generate cryptarithms from word lists\n" +
-                                "- 🎮 Cryptamancer game mode with hints\n" +
-                                "- ⏱️ Cancel long-running tasks")
+                                "- Solve cryptarithms with various solver types\n" +
+                                "- Generate cryptarithms from word lists\n" +
+                                "- Cancel long-running tasks")
                         .version("1.0.1-SNAPSHOT")
                         .contact(new Contact()
                                 .name("Arnaud Malapert")
