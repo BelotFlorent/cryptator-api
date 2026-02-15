@@ -76,7 +76,8 @@ public class CryptagenController {
             request.getMaxWords(),
             request.getLightPropagation(),
             request.getThreads(),
-            request.getCrossGridSize()
+            request.getCrossGridSize(),
+            request.getAllowLeadingZeros()
         );
         
         return ResponseEntity.ok(response);
@@ -109,7 +110,8 @@ public class CryptagenController {
             null,
             false,
             1,
-            null
+            null,
+            false // allowLeadingZeros
         );
         
         return ResponseEntity.ok(response);
@@ -156,7 +158,8 @@ public class CryptagenController {
             request.getMaxWords(),
             request.getLightPropagation(),
             request.getThreads(),
-            request.getCrossGridSize()
+            request.getCrossGridSize(),
+            request.getAllowLeadingZeros()
         );
         
         return ResponseEntity.ok(response);

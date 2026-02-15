@@ -39,7 +39,7 @@ public class CryptagenService {
                                                  Boolean dryRun, String rightMemberType,
                                                  Integer minWords, Integer maxWords,
                                                  Boolean lightPropagation, Integer threads,
-                                                 Integer crossGridSize) {
+                                                 Integer crossGridSize, Boolean allowLeadingZeros) {
         
         GenerateResponse response = new GenerateResponse();
         
@@ -119,6 +119,10 @@ public class CryptagenService {
             
             if (langCode != null) {
                 config.setLangCode(langCode);
+            }
+            
+            if (allowLeadingZeros != null && allowLeadingZeros) {
+                config.setAllowLeadingZeros(true);
             }
             
             // Configure generation type based on operator symbol

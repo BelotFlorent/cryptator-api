@@ -78,6 +78,11 @@ public class GenerateRequest {
      * Taille de la grille (pour mode CROSS uniquement)
      */
     private Integer crossGridSize;
+    
+    /**
+     * Autoriser les zéros en début de mot
+     */
+    private Boolean allowLeadingZeros = false;
 
     public List<String> getWords() {
         return words;
@@ -205,6 +210,14 @@ public class GenerateRequest {
 
     public void setCrossGridSize(Integer crossGridSize) {
         this.crossGridSize = crossGridSize;
+    }
+    
+    public Boolean getAllowLeadingZeros() {
+        return allowLeadingZeros;
+    }
+
+    public void setAllowLeadingZeros(Boolean allowLeadingZeros) {
+        this.allowLeadingZeros = allowLeadingZeros;
     }
 
     public String getTaskId() {
