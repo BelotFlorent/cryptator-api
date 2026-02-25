@@ -43,8 +43,8 @@ public class SwaggerConfig {
                                 .email("arnaud.malapert@univ-cotedazur.fr")
                                 .url("http://www.i3s.unice.fr/~malapert/"))
                         .license(new License()
-                                .name("BSD 3-Clause License")
-                                .url("https://spdx.org/licenses/BSD-3-Clause.html")))
+                                .name("MIT License")
+                                .url("https://spdx.org/licenses/MIT.html")))
                 .servers(Arrays.asList(
                         new Server()
                                 .url("http://localhost:8090")
