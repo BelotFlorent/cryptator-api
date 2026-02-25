@@ -12,11 +12,8 @@ import io.swagger.v3.oas.models.OpenAPI;
 import io.swagger.v3.oas.models.info.Contact;
 import io.swagger.v3.oas.models.info.Info;
 import io.swagger.v3.oas.models.info.License;
-import io.swagger.v3.oas.models.servers.Server;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-
-import java.util.Arrays;
 
 /**
  * Swagger/OpenAPI Configuration
@@ -40,18 +37,9 @@ public class SwaggerConfig {
                         .version("1.0.1-SNAPSHOT")
                         .contact(new Contact()
                                 .name("Arnaud Malapert")
-                                .email("arnaud.malapert@univ-cotedazur.fr")
                                 .url("http://www.i3s.unice.fr/~malapert/"))
                         .license(new License()
                                 .name("MIT License")
-                                .url("https://spdx.org/licenses/MIT.html")))
-                .servers(Arrays.asList(
-                        new Server()
-                                .url("http://localhost:8090")
-                                .description("Local development server"),
-                        new Server()
-                                .url("http://localhost:8090")
-                                .description("Production server")
-                ));
+                                .url("https://spdx.org/licenses/MIT.html")));
     }
 }
